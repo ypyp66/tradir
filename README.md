@@ -1,48 +1,47 @@
 ## FrontEnd Coding Test Template
 안녕하세요,  
-Tradir.io에 지원해 주셔서 감사합니다.
+Tradir.io에 지원해 주셔서 감사합니다.🙏
 
 Tradir.io 주니어 프론트엔드 개발자 코딩 테스트 기본 템플릿입니다.  
 해당 repository를 클론 하셔서 아래 명시된 항목들만 완성해 주시면 됩니다.  
 과제에만 집중하실 수 있게 기본적인 세팅은 미리 되어있습니다.
 
-### Instructions
+### 📣 &nbsp; Instructions
 
-Use the following open api to get data for the table: https://api.punkapi.com/v2/beers  
-The api returns a list of Beer Objects.
+테이블을 만들 때 사용할 맥주 리스트🍻 API 입니다 ➡️ &nbsp; https://api.punkapi.com/v2/beers
 
-#### Styling
+#### ✨ &nbsp; Styling
 
-* Use Styled Components to style your project
-* Ant Design can be used for basic components (https://ant.design/components/overview/)
+* Styled-Components 를 사용해 주세요
+* Ant Design (https://ant.design/components/overview/) 의 기본 컴포넌트들을 사용하셔도 좋습니다 (선택)
 
-#### Required
-* ``Redirect`` users to ``/home`` when they first arrive
-  - the home page can be blank but testers are free to add a bit of personal design
+#### ⚓ &nbsp; 필수기능
 
-* Create a ``link`` to a ``/beerlist`` page on the homepage
+* 유저가 처음 페이지를 열었을 때 ``/home`` 에 도착하도록 만들어 주세요
+  - 개인적으로 추가하고 싶은 디자인은 자유롭게 추가하셔도 됩니다 😊
+  - 홈페이지에서 ``/beerlist`` 로 링크 이동할 수 있어야 합니다
 
-* Create a page (/beerlist) with a table for the list of Beers (the material table library should be used https://material-table.com/#/docs/get-started)
-  - when a column header is drag and dropped, the new column order should be stored in redux so that the order is maintained even when a user moves between ``/home`` and ``/beerlist``
+* material table library(https://material-table.com/#/docs/get-started) 를 사용해서 맥주 리스트 페이지(/beerlist)를 만들어 주세요
 
-* When a beer name is clicked on, a modal should appear containing all the info of the selected beer
+* 맥주 리스트의 알콜 도수 ``(abv)`` 필터 기능을 만들어 주세요 [ 예) "5-6", "6-7" ]
+  - 필터는 다중 선택이 가능해야 합니다
+  - 필터 기능은 material table library 에 포함되어 있는 기능을 ``사용하지 말고`` 따로 제작해야 합니다
 
-* Create a filter so that users can filter the beers by ``abv`` range ex)"5-6", "6-7"
-  - multiselection should be available
-  - The filter is not part of the table. It should be above the table separate from the table component.
+#### 💡 &nbsp; 선택사항
 
-#### Optional
-* Create a Shopping basket to add and remove beers from  
-  - Shopping basket should be accessible from both ``/home`` and ``/beerlist``
+* 맥주 이름을 클릭했을 때 해당 맥주의 상세 정보를 볼 수 있는 modal 을 제작해 주세요
+
+* 장바구니를 만들어 주세요 
+  - 맥주를 장바구니에 추가하거나 삭제가 가능해야 합니다
+  - 장바구니는 ``/home`` 또는 ``/beerlist`` 에서 접근 가능해야 합니다
+ 
+* 필수 과제 외에 추가적으로 넣고 싶은 기능이 있는 경우 자유롭게 추가해 주세요 
   
-### Grading Standards
-* Completion of the required functionalities(50%)
-* Code Quality (35%)
-* UI/UX Design (15%)
+### 📝 &nbsp; 평가 기준
+* 기능 완성도(50%)
+* 코드 구성(35%)
+* UI 완성도(15%)
 
-*Additional features can be added if the tester wishes to display more than the required functionalities
-
-과제 진행 중 추가적인 문의 사항이 있으실 경우, 언제든지 편하게 연락 주시기 바랍니다.
-
-### ** Do not create a pull request, create a new repository and send the link through email to submit **
+#### 🎈🤖&nbsp; 과제 진행 중 추가적인 문의 사항이 있으실 경우, 언제든지 편하게 연락 주시기 바랍니다. &nbsp; 💌🎉
+<br /><br />
 ### ** 과제 제출 시 개인 github에 repository를 생성하시고 메일로 링크 보내주시면 됩니다 **

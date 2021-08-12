@@ -24,7 +24,8 @@ Tradir.io 주니어 프론트엔드 개발자 코딩 테스트 기본 템플릿�
 * material table library(https://material-table.com/#/docs/get-started) 를 사용해서 맥주 리스트 페이지(/beerlist)를 만들어 주세요
   - material UI의 컴포넌트를 사용하는것이 아닙니다. 위에 있는 링크의 라이브러리를 사용해주세요.
 
-* 테이블의 column header 는 드래그로 순서 변경이 가능해야 합니다. 바뀐 column header 순서는 redux 에 저장되어 ``/home`` 이나 ``/beerlist`` 이동시에도 유지되어야 합니다
+* 테이블의 column header 는 드래그로 순서 변경이 가능해야 합니다. 바뀐 column header 순서는 redux 에 저장되어 ``/home`` 와 ``/beerlist`` 사이 이동시에 유지되어야 합니다
+  - 위 라이브러리에서 드래그 기능을 지원합니다.
 
 * 맥주 리스트의 알콜 도수 ``(abv)`` 필터 기능을 만들어 주세요 [ 예) "5-6", "6-7" ]
   - 필터는 다중 선택이 가능해야 합니다

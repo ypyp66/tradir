@@ -22,6 +22,7 @@ Tradir.io 주니어 프론트엔드 개발자 코딩 테스트 기본 템플릿�
   - 홈페이지에서 ``/beerlist`` 로 링크 이동할 수 있어야 합니다
 
 * material table library(https://material-table.com/#/docs/get-started) 를 사용해서 맥주 리스트 페이지(/beerlist)를 만들어 주세요
+  - material UI의 컴포넌트를 사용하는것이 아닙니다. 위에 있는 링크의 라이브러리를 사용해주세요.
 
 * 맥주 리스트의 알콜 도수 ``(abv)`` 필터 기능을 만들어 주세요 [ 예) "5-6", "6-7" ]
   - 필터는 다중 선택이 가능해야 합니다

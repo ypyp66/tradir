@@ -5,18 +5,24 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import BeerList from "./Pages/BeerList";
-import Home from "./Pages/Home";
+import Bucket from "Components/Bucket";
+import Modals from "Modals/Modals";
+import BeerList from "Pages/BeerList";
+import Home from "Pages/Home";
+import "App.css";
 
 const Routes = () => {
   return (
-    <Router>
-      <Switch>
-        <Redirect exact from="/" to="/home" />
-        <Route path="/home" component={Home} />
-        <Route path="/beerlist" component={BeerList} />
-      </Switch>
-    </Router>
+    <>
+      <Router>
+        <Switch>
+          <Redirect exact from="/" to="/home" />
+          <Route path="/home" component={Home} />
+          <Route path="/beerlist" component={BeerList} />
+        </Switch>
+        <Bucket />
+      </Router>
+    </>
   );
 };
 

@@ -1,9 +1,17 @@
-const Filtering = (value, beerLists) => {
-  const [from, to = 1000] = value
-    .split("-")
-    .map((item) => Number(item) || 1000);
+const Filtering = (selectedFilters, beerLists) => {
+  const result = selectedFilters.reduce((acc, cur) => {
+    const [min, max] = cur
+      .split("~")
+      .map((i, index) =>
+        index === 1 ? (i === "" ? 1000 : Number(i)) : Number(i)
+      );
 
-  return beerLists.filter((item) => item.abv >= from && item.abv <= to);
+    return [
+      ...acc,
+      ...beerLists.filter((item) => item.abv >= min && item.abv <= max),
+    ];
+  }, []);
+  return result;
 };
 
 export default Filtering;

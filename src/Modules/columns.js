@@ -15,7 +15,11 @@ const initialState = [
     title: "Avatar",
     field: "image_url",
     render: (rowData) => (
-      <img src={rowData.image_url} style={{ height: 100 }} alt="프로필" />
+      <img
+        src={rowData.image_url}
+        style={{ height: "100px", width: "60px" }}
+        alt="프로필"
+      />
     ),
   },
   { title: "name", field: "name" },

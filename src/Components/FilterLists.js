@@ -61,7 +61,8 @@ const Container = styled.div`
 `;
 
 const H3 = styled.h3`
-  background-color: lightblue;
+  background-color: #364fc7;
+  color: white;
   border-radius: 50px;
   text-align: center;
   padding: 0px 10px;
@@ -72,14 +73,20 @@ const Inner = styled.div`
 `;
 
 const Item = styled.button`
-  border: none;
+  border: 1px solid transparent;
+  height: max-content;
 
   & + & {
     margin-left: 10px;
   }
+
+  :hover {
+    border: 1px solid black;
+  }
+
   ${(props) =>
     props.selected &&
     css`
-      background-color: wheat;
+      background-color: #74c0fc;
     `}
 `;

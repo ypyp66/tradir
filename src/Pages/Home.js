@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
 import { Api } from "Utils";
@@ -11,7 +10,6 @@ const Home = () => {
   useEffect(() => {
     Api.getBeerLists()
       .then((res) => {
-        console.log(res.data.slice(0, 3));
         setBeerLists(res.data.slice(0, 3));
       })
       .catch((e) => console.log(e));
@@ -20,13 +18,16 @@ const Home = () => {
   return (
     <Container>
       <h1>
-        Beer<Text>?</Text> 비워!
+        Beer<Text>?</Text> 비워<Text>!</Text>
       </h1>
-      <Link to="/beerlist">비어 목록 보러가기</Link>
+      <Link to="/beerlist">
+        <h2>Get Some Beer!</h2>
+      </Link>
       <Inner>
+        <h3>리뷰를 확인해보세요</h3>
         {beerLists.length > 0 &&
           beerLists.map((beer) => (
-            <Item>
+            <Item key={beer.id}>
               <img
                 key={beer.id}
                 src={beer.image_url}
@@ -46,7 +47,7 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default React.memo(Home);
 
 const shake = keyframes`
   from {
@@ -66,7 +67,7 @@ const Container = styled.main`
 
 const Text = styled.div`
   display: inline-block;
-  animation: ${shake} 1s 5s infinite linear alternate;
+  animation: ${shake} 1s infinite linear alternate;
 `;
 
 const Inner = styled.div`
@@ -80,6 +81,7 @@ const Item = styled.div`
 
   display: flex;
   border: 1px solid black;
+  padding: 5px;
 
   & + & {
     margin-top: 20px;

@@ -7,6 +7,7 @@ import { rootSaga } from "Modules";
 import createSagaMiddleware from "redux-saga";
 import { createStore, applyMiddleware, compose } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import GlobalStyle from "GloabalStyle";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -26,6 +27,7 @@ sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={store}>
+    <GlobalStyle />
     <Routes />
   </Provider>,
   document.getElementById("root")

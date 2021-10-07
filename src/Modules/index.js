@@ -5,14 +5,12 @@ import { all } from "redux-saga/effects";
 // import loading from "./loading";
 import { enableES5 } from "immer";
 import columns from "Modules/columns";
-import modals from "Modules/modals";
 import baskets from "Modules/baskets";
 
 enableES5();
 
 const rootReducer = combineReducers({
   columns,
-  modals,
   baskets,
 });
 

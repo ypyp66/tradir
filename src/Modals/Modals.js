@@ -1,22 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Modal } from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleModal } from "Modules/modals";
 
-const Modals = ({ children, customOpen = null }) => {
-  const isOpen = useSelector((state) => state.modals.isOpen);
-  const dispatch = useDispatch();
-
+const Modals = ({ title, isOpen, setIsOpen, children }) => {
   const toggle = () => {
-    dispatch(toggleModal());
+    setIsOpen((prev) => !prev);
   };
 
-  useEffect(() => {
-    console.log(isOpen);
-  }, [isOpen]);
-
   return (
-    <Modal visible={customOpen || isOpen} onOk={toggle} onCancel={toggle}>
+    <Modal title={title} visible={isOpen} onOk={toggle} onCancel={toggle}>
       {children}
     </Modal>
   );

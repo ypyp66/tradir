@@ -9,10 +9,11 @@ const initialState = [];
 function baskets(state = initialState, action) {
   switch (action.type) {
     case ADD_BASKET:
-      return [...state, action.payload];
+      return state.filter((item) => item.id === action.payload.id).length > 0
+        ? state
+        : [...state, action.payload];
     case REMOVE_BASKET:
-      const { id } = action.payload;
-      return state.filter((item) => item.id !== id);
+      return state.filter((item) => item.id !== action.payload);
     default:
       return state;
   }

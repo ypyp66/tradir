@@ -1,23 +1,38 @@
-import styled from "styled-components";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import styled from "styled-components";
 import Modals from "Modals/Modals";
 import BasketItem from "./BasketItem";
+import { removeBasket } from "Modules/baskets";
 
-function Bucket() {
+function Bucket({ location }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [path, setPath] = useState();
   const baskets = useSelector((state) => state.baskets);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleRemove = (id) => {
+    dispatch(removeBasket(id));
+  };
 
   useEffect(() => {
-    console.log(baskets);
-  }, [baskets]);
+    location === "/beerlist"
+      ? setPath(
+          "M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"
+        )
+      : setPath(
+          "M4 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm0-6c-.83 0-1.5.67-1.5 1.5S3.17 7.5 4 7.5 5.5 6.83 5.5 6 4.83 4.5 4 4.5zm0 12c-.83 0-1.5.68-1.5 1.5s.68 1.5 1.5 1.5 1.5-.68 1.5-1.5-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z"
+        );
+  }, [location]);
 
   return (
     <>
       <Container>
         <Inner
           onClick={() => {
-            console.log("click");
+            history.push(location === "/beerlist" ? "/home" : "/beerlist");
           }}
         >
           <SVG
@@ -28,12 +43,11 @@ function Bucket() {
             fill="#000000"
           >
             <path d="M0 0h24v24H0V0z" fill="none" />
-            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+            <path d={path} />
           </SVG>
         </Inner>
         <Inner
           onClick={() => {
-            console.log("click");
             setIsOpen((prev) => !prev);
           }}
         >
@@ -51,7 +65,11 @@ function Bucket() {
       </Container>
       <Modals isOpen={isOpen} setIsOpen={setIsOpen} title="장바구니 목록">
         {baskets.map((basket) => (
-          <BasketItem key={basket.id} data={basket} />
+          <BasketItem
+            key={basket.id}
+            data={basket}
+            handleRemove={handleRemove}
+          />
         ))}
       </Modals>
     </>

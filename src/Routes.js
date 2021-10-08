@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -6,21 +6,30 @@ import {
   Redirect,
 } from "react-router-dom";
 import Bucket from "Components/Bucket";
-import Modals from "Modals/Modals";
 import BeerList from "Pages/BeerList";
 import Home from "Pages/Home";
 import "App.css";
 
 const Routes = () => {
+  const [location, setLocation] = useState();
+
   return (
     <>
       <Router>
         <Switch>
           <Redirect exact from="/" to="/home" />
-          <Route path="/home" component={Home} />
-          <Route path="/beerlist" component={BeerList} />
+          <Route
+            exact
+            path="/home"
+            render={() => <Home setLocation={setLocation} />}
+          />
+          <Route
+            exact
+            path="/beerlist"
+            render={() => <BeerList setLocation={setLocation} />}
+          />
         </Switch>
-        <Bucket />
+        <Bucket location={location} />
       </Router>
     </>
   );

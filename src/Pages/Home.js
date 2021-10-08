@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
-
-import { Link } from "react-router-dom";
 import { Api } from "Utils";
 
-const Home = () => {
+const Home = ({ setLocation }) => {
   const [beerLists, setBeerLists] = useState([]);
 
   useEffect(() => {
@@ -15,14 +13,15 @@ const Home = () => {
       .catch((e) => console.log(e));
   }, []);
 
+  useEffect(() => {
+    setLocation("/home");
+  }, [setLocation]);
+
   return (
     <Container>
       <h1>
         Beer<Text>?</Text> 비워<Text>!</Text>
       </h1>
-      <Link to="/beerlist">
-        <h2>Get Some Beer!</h2>
-      </Link>
       <Inner>
         <h3>리뷰를 확인해보세요</h3>
         {beerLists.length > 0 &&

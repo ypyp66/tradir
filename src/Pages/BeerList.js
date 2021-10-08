@@ -11,13 +11,15 @@ import { changeColumns } from "Modules/columns";
 import { addBasket } from "Modules/baskets";
 import Modals from "Modals/Modals";
 
-function BeerList() {
+function BeerList({ setLocation }) {
   const [beerLists, setBeerLists] = useState([]);
   const [filteredLists, setFilteredLists] = useState([]);
-  const [filterOpen, setFilterOpen] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState([]);
+
+  const [filterOpen, setFilterOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [data, setDate] = useState();
+
+  const [beerDetail, setBeerDetail] = useState();
   const columns = useSelector((state) => state.columns);
   const dispatch = useDispatch();
 
@@ -29,6 +31,10 @@ function BeerList() {
     const result = Filtering(selectedFilters, beerLists);
     setFilteredLists(result);
   }, [selectedFilters, beerLists]);
+
+  useEffect(() => {
+    setLocation("/beerlist");
+  }, [setLocation]);
 
   useEffect(() => {
     Api.getBeerLists()
@@ -46,7 +52,6 @@ function BeerList() {
     <>
       <Container>
         <Inner>
-          <Link to="/home">Take me To HOME</Link>
           <Filters
             filterOpen={filterOpen}
             selectedFilters={selectedFilters}
@@ -63,7 +68,7 @@ function BeerList() {
             columns={columns}
             data={selectedFilters.length > 0 ? filteredLists : beerLists}
             onRowClick={(event, rowData) => {
-              setDate(rowData);
+              setBeerDetail(rowData);
               setModalOpen((prev) => !prev);
             }}
             actions={[
@@ -83,7 +88,7 @@ function BeerList() {
         </Inner>
       </Container>
       <Modals isOpen={modalOpen} setIsOpen={setModalOpen} title="상세보기">
-        <BeerItem data={data} />
+        <BeerItem data={beerDetail} />
       </Modals>
     </>
   );
@@ -93,12 +98,8 @@ export default React.memo(BeerList);
 
 const Container = styled.main`
   width: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
   margin: 0 auto;
+  padding-top: 10px;
 `;
 
 const Inner = styled.section`

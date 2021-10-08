@@ -1,11 +1,7 @@
 import styled from "styled-components";
-import React, { useEffect } from "react";
+import React from "react";
 
 function BeerItem({ data }) {
-  useEffect(() => {
-    console.log("itema");
-  }, []);
-
   return (
     <div>
       <img src={data.image_url} width="50px" height="120px" alt="프로필" />

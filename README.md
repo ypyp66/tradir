@@ -1,5 +1,11 @@
 ## Tradir 과제 전형
 
+### 배포 주소
+- https://angry-hodgkin-c4ac48.netlify.app/
+
+### 깃허브 주소
+- https://github.com/ypyp66/tradir
+
 ### 필수 기능
 
 - [x] 유저가 처음 페이지를 열었을 때 /home 에 도착하도록 만들어 주세요

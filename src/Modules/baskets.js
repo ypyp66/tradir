@@ -10,7 +10,10 @@ function baskets(state = initialState, action) {
   switch (action.type) {
     case ADD_BASKET:
       return state.filter((item) => item.id === action.payload.id).length > 0
-        ? state
+        ? (function () {
+            alert("이미 존재합니다");
+            return state;
+          })()
         : [...state, action.payload];
     case REMOVE_BASKET:
       return state.filter((item) => item.id !== action.payload);

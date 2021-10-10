@@ -17,9 +17,9 @@ function FilterLists({
   };
 
   return (
-    <Container filterOpen={filterOpen}>
+    <Container>
       <H3 onClick={toggleFilter}>필터</H3>
-      <Inner>
+      <Inner filterOpen={filterOpen}>
         {filterOpen &&
           Filter.map(({ id, name }) => (
             <Item
@@ -41,9 +41,11 @@ export default React.memo(FilterLists);
 const list = keyframes`
   from {
     opacity:0;
+    transform : translateY(-20px);
   }
   to {
     opacity:1;
+    transform : translateY(0px);
   }
 `;
 
@@ -53,11 +55,6 @@ const Container = styled.div`
   align-items: center;
 
   margin-bottom: 20px;
-  ${(props) =>
-    props.filterOpen &&
-    css`
-      animation: ${list} 0.3s linear;
-    `}
 `;
 
 const H3 = styled.h3`
@@ -73,6 +70,11 @@ const H3 = styled.h3`
 
 const Inner = styled.div`
   display: flex;
+  ${(props) =>
+    props.filterOpen &&
+    css`
+      animation: ${list} 0.3s linear;
+    `}
 `;
 
 const Item = styled.button`
